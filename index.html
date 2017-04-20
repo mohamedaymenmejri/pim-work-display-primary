@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <script src="js/jquery-2.1.4.js"></script>
+    
+    
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    
+  
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="js/angular-socket.js"></script>
+    
+    
+<script src="js/moment.min.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Resource style -->
+    <script src="js/modernizr.js"></script>
+    <!-- Modernizr -->
+    
+    <script type="text/javascript" src="js/xmlToJSON.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+<!-- <script src="js/news.js"></script>-->
+    <title>SmartQueue Screen Display</title>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    
+    <script>
+    
+  
+    </script>
+    
+    
+    
+    
+</head>
+
+<body onload="getLocation()"  ng-app="pim">
+<div  ng-controller="GeneralController">
+    <main class="cd-main-content">
+        <nav class="cd-side-nav">
+            <ul>
+                <div class="clock-wrap">
+                    <div class="hour-wrap">
+                        <div class="digit-top">
+                            <div class="front">00</div>
+                            <div class="back">00</div>
+                        </div>
+                        <div class="digit-bottom">
+                            <div class="front">00</div>
+                        </div>
+                    </div>
+                    <div class="min-wrap">
+                        <div class="digit-top">
+                            <div class="front">00</div>
+                            <div class="back">00</div>
+                        </div>
+                        <div class="digit-bottom">
+                            <div class="front">00</div>
+                        </div>
+                    </div>
+                    <div class="sec-wrap">
+                        <div class="digit-top">
+                            <div class="front">00</div>
+                            <div class="back">00</div>
+                        </div>
+                        <div class="digit-bottom">
+                            <div class="front">00</div>
+                        </div>
+                    </div>
+                </div>
+
+            </ul>
+
+            <ul id="weather">
+                
+                
+                <div class="weather-wrapper">
+                    <div class="weather-card-date">
+                        
+                        <div id="date">15 decembre 2017</div>
+                        
+                    </div>
+                    <div id="weathercard" class="weather-card">
+
+
+                    </div>
+
+                </div>
+                <div class="weather-wrapper-Forcast">
+
+                    <table class="ForeCastTable">
+                        <tr>
+                            <th id="day1">Day 1</th>
+                            <th id="day2">Day 2</th>
+                            <th id="day3">Day 3</th>
+                            <th id="day4">Day 4</th>
+                            <th id="day5">Day 5</th>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="day1div"></div>
+                            </td>
+                            <td>
+                                <div id="day2div"></div>
+                            </td>
+                            <td>
+                                <div id="day3div"></div>
+                            </td>
+                            <td>
+                                <div id="day4div"></div>
+                            </td>
+                            <td>
+                                <div id="day5div"></div>
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
+                <div class="weather-card-waiting" id="waiting">
+                    
+                        <h1>Ticket en attente: {{ TicketWaitings }}</h1>
+
+                </div>
+
+            </ul>
+
+        </nav>
+
+        <div class="content-wrapper">
+            <div class="row active-with-click" >
+
+                <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="ticket in tickets">
+                    <article class="material-card Blue-Grey mc-active">
+                        <h2>
+                                Guicher Numero<br><span>{{ticket.window_number}}</span>
+                            </h2>
+                        <div class="mc-content">
+                            <div class="mc-description">
+                                {{ticket.ticket_number}}
+                            </div>
+                        </div>
+
+                        <div class="mc-footer">{{ticket.service}}
+                        </div>
+                    </article>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- .content-wrapper -->
+    </main>
+    <!-- .cd-main-content -->
+    <footer>
+        <marquee behavior="scroll" direction="left">
+            <span>news scrolling text goes here</span>
+            <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+            <span>news scrolling text goes here</span>
+            <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+            <span>Your scrolling text goes here</span>
+            <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+            <span>news scrolling text goes here</span>
+        </marquee>
+    </footer>
+    </div>
+    <!--
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery.menu-aim.js"></script>
+-->
+    <script src="js/main.js"></script>
+    <!-- Resource jQuery -->
+    <script src='http://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js'></script>
+    <script src="js/timer.js"></script>
+    
+   
+</body>
+
+</html>
