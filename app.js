@@ -105,7 +105,7 @@ io.on('connection',function(socket){
 				io.emit('error');
 			} else {
 //				io.emit("count ticket", result);
-                
+                console.log(result);
                 io.emit('refresh feed',result);
                 
 			}
@@ -223,7 +223,7 @@ var getDataTicketwaiting = function(callback) {
 			return callback(true,null);
 		} else {
 
-			var sqlQuery = "SELECT count(*) as num FROM ?? where status = 'waiting'";
+			var sqlQuery = "SELECT count(*) as num FROM tickets where status = 'waiting' AND DATE_FORMAT(created_at,'%Y%c%d') = DATE_FORMAT(now(),'%Y%c%d')";
 			var inserts = ["tickets"];
 			sqlQuery = mysql.format(sqlQuery,inserts);
 			connection.query(sqlQuery,function(err,rows){
